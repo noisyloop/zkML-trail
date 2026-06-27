@@ -1,0 +1,4 @@
+{
+  "_comment": "5 normalized momentum features (recent returns, fast/slow). Positive momentum -> buy.",
+  "input": [0.82, 0.61, 0.44, 0.50, 0.33]
+}

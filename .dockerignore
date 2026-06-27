@@ -1,0 +1,12 @@
+.git
+.github
+**/.zkml-trail
+**/.gen
+examples/*/receipt.json
+**/__pycache__
+*.egg-info
+.venv
+venv
+.pytest_cache
+*.srs
+*.compiled

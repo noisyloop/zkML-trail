@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zkml-trail"
+version = "1.0.0"
+description = "Cryptographic receipts for AI agent decisions, using zero-knowledge proofs (EZKL / Halo2)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "noisyloop" }]
+keywords = ["zkml", "zero-knowledge", "ezkl", "halo2", "ai-agents", "audit", "onnx", "compliance"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Security :: Cryptography",
+]
+dependencies = [
+    "ezkl>=22,<24",
+    "onnx>=1.16",
+    "numpy>=1.24",
+    "click>=8.1",
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.9",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "httpx>=0.27"]
+
+[project.scripts]
+zkml-trail = "zkml_trail.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/noisyloop/zkml-trail"
+Repository = "https://github.com/noisyloop/zkml-trail"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+zkml_trail = ["py.typed"]

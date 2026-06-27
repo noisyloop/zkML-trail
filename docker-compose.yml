@@ -1,0 +1,26 @@
+# zkml-trail — one command to a running proof server:
+#
+#     docker compose up
+#
+# Then open http://localhost:8000/docs for the interactive API, or POST a
+# model to /agents/register. Ready in well under 5 minutes on a typical box.
+services:
+  zkml-trail:
+    build: .
+    image: zkml-trail:latest
+    container_name: zkml-trail
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist registered agents (proving/verifying keys, circuits, SRS).
+      - zkml_trail_data:/data
+    environment:
+      # Root of the on-disk artifact store inside the container.
+      ZKML_TRAIL_HOME: /data
+      # Proving runs in isolated subprocesses; bound thread usage for
+      # predictable behavior in constrained containers.
+      RAYON_NUM_THREADS: "4"
+    restart: unless-stopped
+
+volumes:
+  zkml_trail_data:
